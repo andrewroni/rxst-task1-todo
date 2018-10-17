@@ -1,0 +1,23 @@
+.btn-close-wrap img{
+  max-width:  100%;
+}
+.btn-close-wrap {
+  float: right;
+  cursor: pointer;
+  max-width: 20;
+  max-height: 20;
+}
+.btn-close-wrap-b {
+  float: right;
+}
+form input[type=image] {
+	width : 20px;
+	height :20px;
+	border : none;
+	color : transparent;
+	font-size : 0
+}
+.user-name {
+  padding: 8px;
+  display: inline-block;
+}

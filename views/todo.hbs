@@ -1,0 +1,60 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+
+<fieldset>
+  {{> navbar_logout this}}
+  <form class="" action="/todo" method="post">
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="task">Task</label>
+      <div class="col-md-4">
+      <input id="username" name="text" type="text" placeholder="New Todo" class="form-control input-md" required="" autocomplete="off">
+
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit-form"></label>
+      <div class="col-md-4">
+        <button id="submit-form" class="btn btn-primary">Add task</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Table -->
+  <div class="container-fluid" >
+    <div class="row p5">
+      <div class="col-md-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="border-0 text-uppercase small font-weight-bold">ToDo List</th>
+              <th class="border-0 text-uppercase small font-weight-bold" style="text-align:right">Done</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#todos}}
+              <tr>
+                  <td>
+                    {{text}}
+                  </td>
+                  <td>
+                    <form class="" action="/todo/{{id}}" method="post">
+                    <div class="btn-close-wrap">
+                      <input type="image" src="../assets/img/close.png" name="submit" value="submit">
+                    </div>
+                  </form>
+                  </td>
+              </tr>
+            {{/todos}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</fieldset>

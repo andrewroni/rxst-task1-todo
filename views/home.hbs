@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="import" href="nav.html">
+    <title>Home</title>
+  </head>
+  <body>
+
+    {{#if loggedin}}
+      {{> navbar_logout this}}
+    {{else}}
+      {{> navbar }}
+    {{/if}}
+
+    {{#if loggedin}}
+      <div class="alert alert-success" role="alert">
+        <span>
+          Logged in (Signed up) successfuly! To see the content, click at <a href="/todo">ToDo List</a>.
+        </span>
+      </div>
+
+    {{else}}
+
+    <div class="alert alert-danger" role="alert">
+      <span>
+        In order to see the content, you have to <a href="/login">Login</a> with an existing user, or <a href="/signup">Signup</a> as a new user.
+      </span>
+    </div>
+    {{/if}}
+
+  </body>
+</html>

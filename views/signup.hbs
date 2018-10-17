@@ -1,0 +1,48 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+
+<fieldset>
+  {{> navbar }}
+
+    <form class="" action="/signup" method="post">
+      <!-- Text input-->
+      <div class="form-group">
+
+          <label class="col-md-4 control-label" for="email">E-Mail</label>
+          <div class="col-md-4">
+          <input id="email" name="email" type="text" placeholder="email@gmail.com" class="form-control input-md" required="">
+
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="password">Password</label>
+        <div class="col-md-4">
+        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+
+        </div>
+      </div>
+
+
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="submit-form"></label>
+        <div class="col-md-8">
+          <button id="submit-form" class="btn btn-primary">Signup</button>
+        </div>
+      </div>
+
+    </form>
+
+    {{#if userExist}}
+      <div class="alert alert-danger" role="alert">
+        <span>
+          User already exist! Click at <a href="/login">Login</a>, or <a href="/signup">Signup</a> as a new user.
+        </span>
+      </div>
+    {{/if}}
+
+</fieldset>
