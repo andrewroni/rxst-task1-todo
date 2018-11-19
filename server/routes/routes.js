@@ -40,7 +40,6 @@ router.get('/', (req, res) => {
   if(req.cookies.authorization) {
     console.log(req.user);
     loggedin = true;
-    //email = req.user.email;
     email = req.cookies.email
   }
   res.render('home.hbs', {
@@ -82,13 +81,11 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-//  let body = _.pick(req.body, ['email', 'password']);
 
   User.findOne({email: req.body.email}).then((user) => {
     if(user) {
       if(user.isValidPassword(req.body.password)) {
         console.log('Success');
-        //return res.header('id', user._id).redirect('/todo');
         return user.generateAuthToken().then((token) => {
           res.cookie('authorization', token, { maxAge: 60 * 1000});
           res.cookie('email', req.body.email, { maxAge: 60 * 1000});
@@ -165,7 +162,7 @@ router.post('/todo/:id', (req, res) => {
     if(!todo) {
       return res.status(404).send();
     }
-    console.log(`Todo with id ${id} was delteted`);
+    console.log(`Todo with id ${id} was deleted`);
     res.redirect('/todo');
   }).catch((e) => {
     res.status(400).send();
