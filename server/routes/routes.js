@@ -104,7 +104,7 @@ router.post('/login', (req, res) => {
 
 
 router.post('/signup', (req, res) => {
-  let body = _.pick(req.body, ['email', 'password']);
+  const body = _.pick(req.body, ['email', 'password']);
   let userExist = false;
 
   User.findOne({email: req.body.email}).then((result) => {
@@ -116,7 +116,7 @@ router.post('/signup', (req, res) => {
       });
     } else {
       console.log('user was NOT found');
-      let user = new User(body);
+      const user = new User(body);
       user.save().then(() => {
         return user.generateAuthToken();
       }).then((token) => {
@@ -135,7 +135,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/todo', (req, res) => {
-  let todo = new Todo({
+  const todo = new Todo({
     text: req.body.text,
     _creator: req.user._id
   });
@@ -149,7 +149,7 @@ router.post('/todo', (req, res) => {
 });
 
 router.post('/todo/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
 
   if(!ObjectID.isValid(id)) {
     return res.status(404).send({});

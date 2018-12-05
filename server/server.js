@@ -16,7 +16,7 @@ const publicPath = path.join(__dirname, '../public');
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
-let db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', (err) => console.log(err));
 db.once('open', () => console.log('Connected to MongoDB'));
 
