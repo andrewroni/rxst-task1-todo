@@ -1,6 +1,5 @@
 const express      = require('express');
 const bodyParser   = require('body-parser');
-const _            = require('lodash');
 const jwt          = require('express-jwt');
 const cookieParser = require('cookie-parser');
 
@@ -104,7 +103,7 @@ router.post('/login', (req, res) => {
 
 
 router.post('/signup', (req, res) => {
-  const body = _.pick(req.body, ['email', 'password']);
+  const {email, password} = req.body;
   let userExist = false;
 
   User.findOne({email: req.body.email}).then((result) => {
@@ -116,7 +115,7 @@ router.post('/signup', (req, res) => {
       });
     } else {
       console.log('user was NOT found');
-      const user = new User(body);
+      const user = new User(email, password);
       user.save().then(() => {
         return user.generateAuthToken();
       }).then((token) => {
